@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 using DURAND.Models;
 using DURAND.Services;
-
+//comentario
 namespace DURAND.Controllers
 {
     public class HomeController : Controller
