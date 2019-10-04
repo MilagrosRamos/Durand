@@ -181,6 +181,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Fondo.jpg" />
+    <Content Include="Content\Foto.png" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\logo hematologia durand.png" />
     <Content Include="Content\modern-business.css" />
