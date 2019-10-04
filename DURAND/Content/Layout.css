@@ -1,0 +1,45 @@
+﻿#footer {
+    margin-top: 140px;
+}
+
+#botoncito {
+    margin-top: 10px;
+    padding: 12px;
+}
+
+#botonardo {
+    height: auto;
+    width: -webkit-fill-available;
+    margin-block-end: initial;
+    padding: 12px;
+}
+
+#form-login {
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 10px 10px 20px 0 #DDD;
+    text-align: center;
+    border: 1px solid #CCC;
+}
+
+#form-login input {
+        width: 100%;
+        margin: 10px 0;
+        height: 50px;
+        border-radius: 5px;
+        text-align: center;
+}
+
+#id {
+    margin-top: 15px;
+}
+
+#foto {
+    margin-top: 0px;
+}
+
+#datospacientes {
+    padding: 60px;
+}

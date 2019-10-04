@@ -1,0 +1,14 @@
+2019/07/05 09:56:16.018 La conversión especificada no es válida.
+2019/07/05 09:57:15.909 La conversión especificada no es válida.
+2019/07/05 09:57:20.714 La conversión especificada no es válida.
+2019/07/05 09:57:29.869 La conversión especificada no es válida.
+2019/07/05 09:57:50.096 La conversión especificada no es válida.
+2019/07/05 09:58:39.683 La conversión especificada no es válida.
+2019/07/05 11:30:02.949 Invalid column name 'IDSexo'.
+Invalid column name 'IDObraSocial'.
+Invalid column name 'IDPatologia'.
+2019/07/05 11:32:53.496 Invalid column name 'IDSexo'.
+Invalid column name 'IDObraSocial'.
+Invalid column name 'IDPatologia'.
+2019/07/05 11:52:00.002 Referencia a objeto no establecida como instancia de un objeto.
+2019/07/05 11:53:13.772 Referencia a objeto no establecida como instancia de un objeto.

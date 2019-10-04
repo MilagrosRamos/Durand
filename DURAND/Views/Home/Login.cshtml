@@ -1,0 +1,41 @@
+﻿@using DURAND.Models
+@model Medico
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<div class="row">
+    <div class="col-sm-2 col-md-4"></div>
+    <div class="col-sm-8 col-md-4">
+        <div id="form-login">
+            <img src="~/Content/logo hematologia durand.png" height="100px" /></br></br>
+            @using (@Html.BeginForm("Login", "Home", FormMethod.Post, new { enctype = "multipart/form-data", align = "center" }))
+            {
+                <div class="input-group form-group">
+                    @Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail", @class = "form-control" })
+                </div>
+                <div class="input-group formc-group">
+                    @Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "Contraseña", @class = "form-control", Type = "password" })
+                </div>
+                <p><input type="submit" value="Iniciar sesión &raquo;" class="btn btn-danger"></p>
+            }
+            <p><a href="@Url.Action("RegistrarMedico", "Home")" class="btn btn-outline-dark">Registrar Medico &raquo;</a></p>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-4"></div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        var blnExiste = @ViewBag.blnMedicoExiste;
+        var rta = "El médico ingresado no existe";
+        if (blnExiste == false) {
+            alert(rta);
+        }
+    });
+
+</script>

@@ -1,0 +1,59 @@
+﻿@using DURAND.Models
+@model Medico
+@{
+    Medico unMedico = ViewBag.Medico;
+    ViewBag.Title = "RegistrarMedico";
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<div class="container">
+    <div class="col-sm-2 col-md-4">
+        <h1 class="mt-4 mb-3">
+            Registrar médico
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mb-6">
+            @using (@Html.BeginForm("RegistrarMedicoOK", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                //FOTO
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("Especialidad:") @Html.DropDownList("nombreEspecialidad", (IEnumerable<SelectListItem>)ViewBag.especialidadList, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("Mail:")@Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("Contraseña:")@Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "*****", @class = "form-control", Type = "password" })
+                        @Html.ValidationMessageFor(x => x.Contrasenia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Label("DNI:")@Html.TextBoxFor(x => x.Dni, new { placeholder = "DNI", @class = "form-control", maxlength = 8 })
+                        @Html.ValidationMessageFor(x => x.Dni, "", new { @class = "text-danger"})
+                    </div>
+                </div>
+                <p><input type="submit" value="Registrar Medico &raquo;" class="btn btn-outline-dark"></p>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+Esta carpeta debe existir asi se almacenan los archivos de LOGs.
+Polshetta.

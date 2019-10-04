@@ -1,0 +1,39 @@
+﻿@using DURAND.Models
+@model Paciente
+@{
+    ViewBag.Title = "BuscarPaciente";
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+@using (@Html.BeginForm("HistoriaClinica", "Home", FormMethod.Post, new { enctype = "multipart/form-data", align = "center" }))
+{
+    <div class="input-group form-group" id="id">
+        <div class="row">
+            <h1 class="mt-4 mb-3">
+                Buscar Paciente
+            </h1>
+            <div class="col col-8">
+                @Html.TextBoxFor(x => x.DNI, new { placeholder = "Ingrese el DNI del paciente", @class = "form-control" })
+            </div>
+            <div class="col col-2">
+                <p><input type="submit" value="Buscar paciente &raquo;" class="btn btn-outline-dark" id="boton"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="Errores"></div>
+}
+
+<script>
+    $(document).ready(function () {
+        var blnExiste = @ViewBag.blnPacienteExiste;
+        var rta = "El paciente ingresado no existe";
+        if (blnExiste == false) {
+            alert(rta);
+        }
+    });
+</script>
