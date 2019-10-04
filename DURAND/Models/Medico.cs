@@ -48,6 +48,7 @@ namespace DURAND.Models
                 _idMedico = value;
             }
         }
+
         public string Nombre
         {
             get
