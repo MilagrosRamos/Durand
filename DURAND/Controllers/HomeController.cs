@@ -199,5 +199,10 @@ namespace DURAND.Controllers
             return View("HistoriaClinica", elPaciente);
         }
 
+        //DROGAS
+        public ActionResult AgregarMedicamento()
+        {
+            return View();
+        }
     }
 }

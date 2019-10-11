@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "AgregarMedicamento";
+    Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+
+}
+<div class="container">
+    <div class="col-4 col-md-8">
+        <h1 class="mt-4 mb-3">
+            Agregar Medicamento
+        </h1>
+    </div>
+</div>
+<div class="col-md-8 float-left">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th scope="col">Droga</th>
+                <th scope="col">Dosis</th>
+                <th scope="col">Dosis del paciente</th>
+                <th scope="col">Formas de observación</th>
+                <th scope="col">Agregar otro medicamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="col">Rituximab</td>
+                <td scope="col">375 mg/m2 Día 1</td>
+                <td scope="col">
+                    Suspendido por alergia
+                </td>
+                <td scope="col">
+                    Diluido en.......
+                    Velocidad de goteo pasa en 2 horas según tolerancia
+                </td>
+                <td class="text-center">@Html.CheckBox("Medicamento")</td>
+            </tr>
+            <tr>
+                <td scope="col">Ciclofosfamida</td>
+                <td scope="col">750mg/m2  Día 1</td>
+                <td scope="col">
+                    1237 mg
+                </td>
+                <td scope="col">
+                    Diluido en 500ml a pasar en 30 minutos, endovenoso
+                </td>
+                <td class="text-center">@Html.CheckBox("Medicamento")</td>
+            </tr>
+            <tr>
+                <td scope="col">Vincristina</td>
+                <td scope="col">1.4mg/m2  Día 1</td>
+                <td scope="col">
+                    2mg
+                </td>
+                <td scope="col">
+                    Diluido en 50 ml de Sn. Fisiológica a pasar en bolo lento ( 5 ´ev)
+                </td>
+                <td class="text-center">@Html.CheckBox("Medicamento")</td>
+            </tr>
+            <tr>
+                <td scope="col">Prednisona</td>
+                <td scope="col">100mg/d1-5</td>
+                <td scope="col">
+                    100 mg
+                </td>
+                <td scope="col">
+                    Vía oral
+                </td>
+                <td class="text-center">@Html.CheckBox("Medicamento")</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <p><input type="submit" value="Agregar Medicamento &raquo;" class="btn btn-outline-dark"></p>
+</div>
+

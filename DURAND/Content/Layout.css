@@ -43,3 +43,16 @@
 #datospacientes {
     padding: 60px;
 }
+
+#botonForm {
+    margin-top: 15px;
+}
+
+
+#botonLogin {
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+}
