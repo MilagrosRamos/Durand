@@ -235,7 +235,11 @@
     <Content Include="Views\Home\RegistrarPaciente.cshtml" />
     <Content Include="Views\Home\AgregarVisita.cshtml" />
     <Content Include="Views\Home\BuscarPaciente.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\AgregarMedicamento.cshtml" />
+=======
+    <Content Include="Views\Home\ModificarMedico.cshtml" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

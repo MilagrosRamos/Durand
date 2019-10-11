@@ -73,6 +73,11 @@ namespace DURAND.Services
 
             return returnEntity;
         }
+
+       //public static Medico ModificarMedico()
+       //{
+       //    //consulta de update
+       //}
         
         public static List<SelectListItem> ObtenerTodosDropDown()
         {
@@ -107,6 +112,37 @@ namespace DURAND.Services
             DatabaseHelper.CloseAndDisposeReader(ref currentReader);
 
             return listaDevolver;
+        }
+        
+        public static Medico ObtenerPorMail (string strMail) //que obtenga nombre apellido y especialidad
+        {
+            Medico returnEntity = null;
+            SqlParameter[] parameterArray = new SqlParameter[1];
+            SqlDataReader currentReader = null;
+
+            parameterArray[0] = new SqlParameter("@strMail", strMail);
+
+
+            try
+            {
+                currentReader = DatabaseHelper.ExecuteReader("Medicos_ObtenerPorMail", parameterArray);
+                if (currentReader != null)
+                {
+                    if (currentReader.HasRows)
+                    {
+                        currentReader.Read();
+                        returnEntity = DataReaderToObject(currentReader);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomLog.LogException(ex);
+            }
+
+            DatabaseHelper.CloseAndDisposeReader(ref currentReader);
+
+            return returnEntity;
         }
         
         public static int AgregarMedico(Medico unMedico)

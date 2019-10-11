@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
-
 using DURAND.Models;
 using DURAND.Services;
-//comentario
+
 namespace DURAND.Controllers
 {
     public class HomeController : Controller
     {
+
+        //ACCIONES
         public ActionResult Login()
         {
             return View();
@@ -22,6 +23,7 @@ namespace DURAND.Controllers
         {
             Medico MedicoTest;
             MedicoTest = MedicosService.ObtenerPorMailyContrasenia(unMedico.Mail, unMedico.Contrasenia);
+            //System.Web.HttpContext.Current.Session["sessionMedico"] = MedicoTest;
             if (MedicoTest != null)
             {
                 return View("PantallaPrincipal");
@@ -66,6 +68,13 @@ namespace DURAND.Controllers
             int RegsAfec            = MedicosService.AgregarMedico(unMedico);
 
             return View("Login");
+        }
+
+        public ActionResult ModificarMedico()
+        {
+            IEnumerable<SelectListItem> especialidades = EspecialidadesService.ObtenerTodosDropDown().ToList();
+            ViewBag.especialidadList = especialidades;
+            return View();
         }
 
         //PACIENTE
@@ -204,5 +213,14 @@ namespace DURAND.Controllers
         {
             return View();
         }
+        //LAYOUT
+
+        //public ActionResult LayoutInterno(Medico unMedico)
+        //{
+        //    Medico MedicoNombreYApellido = MedicosService.ObtenerPorMail(unMedico.Mail);
+        //    ViewBag.NombreYApellidoMedico = MedicoNombreYApellido.Apellido + ", " + MedicoNombreYApellido.Nombre;
+        //    return View();
+        //}
+
     }
 }

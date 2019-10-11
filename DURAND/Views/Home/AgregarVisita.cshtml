@@ -7,8 +7,6 @@
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 
     Paciente unPaciente = ViewBag.Paciente;
-    //List <Medico> medicoList = ViewBag.listMedico;
-
 }
 
 <div class="container">
@@ -17,20 +15,9 @@
             Agregar Visita
         </h1>
     </div>
+
     <div class="row">
-        <div class="col-lg-12 mb-6">
-            <b>Nombre: </b>                 @unPaciente.Nombre
-            <b>Apellido: </b>               @unPaciente.Apellido
-            <b>DNI: </b>                    @unPaciente.DNI
-            <b>Domicilio: </b>              @unPaciente.Domicilio
-            <b>Obra social: </b>            @unPaciente.IDObraSocial
-            <b>Patología: </b>              @unPaciente.IDPatologia
-            <b>Fecha de nacimiento: </b>    @FormatosHelper.FormatearFecha(unPaciente.FechaDeNacimiento)
-            </br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 mb-6">
+        <div class="col-lg-6 col-md-4">
             @using (@Html.BeginForm("AgregarVisitaOk", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <input type="hidden" id="IDPacientex" name="IDPacientex" value="@unPaciente.Id" />
@@ -63,6 +50,21 @@
                 <p><input type="submit" value="Agregar Visita &raquo;" class="btn btn-outline-dark"></p>
             }
         </div>
-    </div>
-</div>
 
+        <div class="jumbotron jumbotron col-lg-4 col-md-4 float-right" style="right:-100px;">
+            <div class="container">
+                <p class="lead">
+                    <b>Nombre: </b>                 @unPaciente.Nombre          </br>
+                    <b>Apellido: </b>               @unPaciente.Apellido        </br>
+                    <b>DNI: </b>                    @unPaciente.DNI             </br>
+                    <b>Domicilio: </b>              @unPaciente.Domicilio       </br>
+                    <b>Obra social: </b>            @ViewBag.NombreObraSocial   </br>
+                    <b>Patología: </b>              @ViewBag.NombrePatologia    </br>
+                    <b>Fecha de nacimiento: </b>    @FormatosHelper.FormatearFecha(unPaciente.FechaDeNacimiento) </br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
