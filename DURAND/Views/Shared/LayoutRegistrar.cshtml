@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "LayoutRegistrar";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Intranet Hospital Durand</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/modern-business.css" rel="stylesheet">
+    <link href="~/Content/Layout.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/PantallaPrincipal">Hospital Durand</a><!--esto tiene que ir al index-->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
