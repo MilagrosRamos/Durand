@@ -218,5 +218,23 @@ namespace DURAND.Controllers
 
             return View("HistoriaClinica", elPaciente);
         }
+
+
+        //DROGAS
+        [HttpGet]
+        public ActionResult AgregarMedicamento(int id)
+        {
+            Paciente unPaciente;
+
+            unPaciente = PacientesService.ObtenerPorId(id);
+
+            IEnumerable<SelectListItem> droga= DrogasService.ObtenerTodosDropDown().ToList();
+            ViewBag.drogaList = droga;
+            
+            // hay que traer la lista de drogas, a su vez el paciente para poder hacer el calculo automatico 
+
+            return View();
+        }
+
     }
 }
