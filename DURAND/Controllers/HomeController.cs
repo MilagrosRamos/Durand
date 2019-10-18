@@ -18,14 +18,24 @@ namespace DURAND.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login");
+        }
+
         [HttpPost]
         public ActionResult Login(Medico unMedico)
         {
             Medico MedicoTest;
+            Especialidades currentEspecialidad;
             MedicoTest = MedicosService.ObtenerPorMailyContrasenia(unMedico.Mail, unMedico.Contrasenia);
-            //System.Web.HttpContext.Current.Session["sessionMedico"] = MedicoTest;
             if (MedicoTest != null)
             {
+                currentEspecialidad = EspecialidadesService.ObtenerPorId(MedicoTest.Especialidad);
+
+                System.Web.HttpContext.Current.Session["sessionMedico"]         = MedicoTest;
+                System.Web.HttpContext.Current.Session["SessionEspecialidad"]   = currentEspecialidad;
                 return View("PantallaPrincipal");
             }
             else
@@ -70,10 +80,11 @@ namespace DURAND.Controllers
             return View("Login");
         }
 
-        public ActionResult ModificarMedico()
+        public ActionResult ModificarMedico(Medico unMedico)
         {
             IEnumerable<SelectListItem> especialidades = EspecialidadesService.ObtenerTodosDropDown().ToList();
             ViewBag.especialidadList = especialidades;
+            ViewBag.IdMedico = unMedico.IdMedico;
             return View();
         }
 
@@ -109,7 +120,7 @@ namespace DURAND.Controllers
             unPaciente.IDLocalidad  = Convert.ToInt32(strIDLocalidad);
             unPaciente.IDProvincia  = Convert.ToInt32(strIDProvincia);
             unPaciente.IDPatologia  = Convert.ToInt32(strIDPatologia);
-            unPaciente.IDArchivo    = 5;
+            unPaciente.IDArchivo    = 5;//ver
 
             int RegsAfec = PacientesService.AgregarPaciente(unPaciente);
 
@@ -207,15 +218,5 @@ namespace DURAND.Controllers
 
             return View("HistoriaClinica", elPaciente);
         }
-
-        //LAYOUT
-
-        //public ActionResult LayoutInterno(Medico unMedico)
-        //{
-        //    Medico MedicoNombreYApellido = MedicosService.ObtenerPorMail(unMedico.Mail);
-        //    ViewBag.NombreYApellidoMedico = MedicoNombreYApellido.Apellido + ", " + MedicoNombreYApellido.Nombre;
-        //    return View();
-        //}
-
     }
 }

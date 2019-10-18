@@ -15,13 +15,13 @@
             {
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", @class = "form-control" })
+                        @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", @class = "form-control" })
+                        @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -37,13 +37,13 @@
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Domicilio:") @Html.TextBoxFor(x => x.Domicilio, new { placeholder = "Domicilio", @class = "form-control" })
+                        @Html.Label("Domicilio:") @Html.TextBoxFor(x => x.Domicilio, new { placeholder = "Domicilio", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Domicilio, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Telefono:") @Html.TextBoxFor(x => x.Telefono, new { placeholder = "Telefono", @class = "form-control" })
+                        @Html.Label("Telefono:") @Html.TextBoxFor(x => x.Telefono, new { placeholder = "Telefono", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Telefono, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -54,14 +54,14 @@
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Altura:") @Html.TextBoxFor(x => x.Altura, new { placeholder = "Altura", @class = "form-control" })
+                        @Html.Label("Altura:") @Html.TextBoxFor(x => x.Altura, new { placeholder = "Altura", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Altura, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 //HACER REQUIRED
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Peso:") @Html.TextBoxFor(x => x.Peso, new { placeholder = "Peso", @class = "form-control" })
+                        @Html.Label("Peso:") @Html.TextBoxFor(x => x.Peso, new { placeholder = "Peso", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Peso, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 //FOTO
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("DNI:") @Html.TextBoxFor(x => x.DNI, new { placeholder = "DNI", @class = "form-control", maxlength = 8 })
+                        @Html.Label("DNI:") @Html.TextBoxFor(x => x.DNI, new { placeholder = "DNI", @class = "form-control", required = "required", maxlength = 8 })
                         @Html.ValidationMessageFor(x => x.DNI, "", new { @class = "text-danger" })
                     </div>
                 </div>

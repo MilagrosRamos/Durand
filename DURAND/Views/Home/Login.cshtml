@@ -14,7 +14,7 @@
             @using (@Html.BeginForm("Login", "Home", FormMethod.Post, new { enctype = "multipart/form-data", align = "center" }))
             {
                 <div class="input-group form-group">
-                    @Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail", @class = "form-control" })
+                    @Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail", @class = "form-control"})
                 </div>
                 <div class="input-group formc-group">
                     @Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "Contraseña", @class = "form-control", Type = "password" })

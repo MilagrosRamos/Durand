@@ -45,5 +45,50 @@ namespace DURAND.Services
 
             return listaDevolver;
         }
+
+        public static Especialidades ObtenerPorId(int intID)
+        {
+            Especialidades returnEntity = null;
+            SqlParameter[] parameterArray = new SqlParameter[1];
+            SqlDataReader currentReader = null;
+
+            parameterArray[0] = new SqlParameter("@intID", intID);
+
+            try
+            {
+                currentReader = DatabaseHelper.ExecuteReader("Especialidades_ObtenerPorId", parameterArray);
+                if (currentReader != null)
+                {
+                    if (currentReader.HasRows)
+                    {
+                        currentReader.Read();
+                        returnEntity = DataReaderToObject(currentReader);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomLog.LogException(ex);
+            }
+
+            DatabaseHelper.CloseAndDisposeReader(ref currentReader);
+
+            return returnEntity;
+        }
+
+        private static Especialidades DataReaderToObject(SqlDataReader currentReader)
+        {
+            Especialidades returnEntity = null;
+
+            if (currentReader != null)
+            {
+                returnEntity = new Especialidades();
+
+                returnEntity.Id     = (currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0);
+                returnEntity.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+            }
+
+            return returnEntity;
+        }
     }
 }
