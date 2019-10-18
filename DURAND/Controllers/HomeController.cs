@@ -209,18 +209,20 @@ namespace DURAND.Controllers
         }
 
         //DROGAS
-        public ActionResult AgregarMedicamento()
+        [HttpGet]
+        public ActionResult AgregarMedicamento(int id)
         {
+            Paciente unPaciente;
+
+            unPaciente = PacientesService.ObtenerPorId(id);
+
+            IEnumerable<SelectListItem> droga= DrogasService.ObtenerTodosDropDown().ToList();
+            ViewBag.drogaList = droga;
+            
+            // hay que traer la lista de drogas, a su vez el paciente para poder hacer el calculo automatico 
+
             return View();
         }
-        //LAYOUT
-
-        //public ActionResult LayoutInterno(Medico unMedico)
-        //{
-        //    Medico MedicoNombreYApellido = MedicosService.ObtenerPorMail(unMedico.Mail);
-        //    ViewBag.NombreYApellidoMedico = MedicoNombreYApellido.Apellido + ", " + MedicoNombreYApellido.Nombre;
-        //    return View();
-        //}
 
     }
 }
