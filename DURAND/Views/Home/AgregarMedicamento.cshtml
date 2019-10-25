@@ -1,8 +1,10 @@
-﻿
+﻿@using DURAND.Models
+@using DURAND.Helpers
+@model DURAND.Models.Droga
+
 @{
     ViewBag.Title = "AgregarMedicamento";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
-    @model DURAND.Models.Droga
 
 }
 <div class="container">
@@ -19,11 +21,6 @@
             <div class="control-group form-group">
                 <div class="controls">
                     @Html.Label("Droga:") @Html.DropDownList("Nombre", (IEnumerable<SelectListItem>)ViewBag.drogaList, new { required = "required", @class = "form-control" })
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    @Html.Label("Dosis:") @Html.DropDownList("Nombre", (IEnumerable<SelectListItem>)ViewBag.drogaList, new { required = "required", @class = "form-control" })
                 </div>
             </div>
             <div class="control-group form-group">

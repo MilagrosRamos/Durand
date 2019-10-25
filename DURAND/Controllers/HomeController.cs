@@ -231,8 +231,29 @@ namespace DURAND.Controllers
             IEnumerable<SelectListItem> droga= DrogasService.ObtenerTodosDropDown().ToList();
             ViewBag.drogaList = droga;
             
-            // hay que traer la lista de drogas, a su vez el paciente para poder hacer el calculo automatico 
+            //Hay que traer la lista de drogas, a su vez el paciente para poder hacer el calculo automatico 
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AgregarMedicamentoOk(Droga unaDroga)
+        {
+            int RegAfectados;
+
+            if(unaDroga != null)
+            {
+                //RegAfectados = DrogasService.AgregarDroga(unaDroga);
+                /*[Id]
+      ,[DosisEstandar]
+      ,[DosisPaciente]
+      ,[IDPaciente]
+      ,[Peso]
+      ,[Altura]
+      ,[Observaciones]
+      ,[IDDroga]
+      ,[IDDosis]*/
+            }
             return View();
         }
 
