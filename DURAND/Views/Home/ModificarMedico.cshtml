@@ -1,7 +1,6 @@
 ﻿@using DURAND.Models
 @model Medico
 @{
-    Medico unMedico = ViewBag.Medico;
     ViewBag.Title = "ModificarMedico";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
@@ -14,10 +13,14 @@
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-4">
-            @using (@Html.BeginForm("ModificarMedico", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (@Html.BeginForm("ModificarMedicoOk", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-
-                //agregar un hidden para que llegue el id
+                //hacer que esto no se vea
+                <div class="control-group form-group">
+                    <div class="controls">
+                        @Html.Hidden("Id:") @Html.DisplayTextFor(x => x.IdMedico)
+                    </div>
+                </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control" })
@@ -57,5 +60,5 @@
                 <p><input type="submit" value="Modificar Datos &raquo;" class="btn btn-outline-dark"></p>
             }
         </div>
-            </div>
+    </div>
 </div>

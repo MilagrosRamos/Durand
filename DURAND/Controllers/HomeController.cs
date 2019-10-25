@@ -80,12 +80,22 @@ namespace DURAND.Controllers
             return View("Login");
         }
 
-        public ActionResult ModificarMedico(Medico unMedico)
+        public ActionResult ModificarMedico()
         {
             IEnumerable<SelectListItem> especialidades = EspecialidadesService.ObtenerTodosDropDown().ToList();
             ViewBag.especialidadList = especialidades;
-            ViewBag.IdMedico = unMedico.IdMedico;
-            return View();
+            Medico unMedico = (Medico) System.Web.HttpContext.Current.Session["sessionMedico"];
+
+            return View("ModificarMedico", unMedico);
+        }
+
+        [HttpPost]
+        public ActionResult ModificarMedicoOk(Medico unMedico)
+        {
+            string strIDEspecialidad = Request["nombreEspecialidad"];
+            int RegsAfec = MedicosService.ModificarMedico(unMedico);
+
+            return View("PantallaPrincipal");
         }
 
         //PACIENTE
