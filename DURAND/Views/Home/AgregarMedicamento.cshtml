@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "AgregarMedicamento";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
+    @model DURAND.Models.Droga
 
 }
 <div class="container">
@@ -11,12 +12,34 @@
         </h1>
     </div>
 </div>
-@using (@Html.BeginForm("AgregarMedicamentoOK", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.Label("Droga:") @Html.DropDownList("Nombre", (IEnumerable<SelectListItem>)ViewBag.drogaList, new { required = "required", @class = "form-control" })
-    <p><input type="submit" value="Agregar Visita &raquo;" class="btn btn-outline-dark"></p>
-}
-        </div>
+<div class="row">
+    <div class="col-lg-6 col-md-4">
+        @using (@Html.BeginForm("AgregarMedicamentoOK", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="control-group form-group">
+                <div class="controls">
+                    @Html.Label("Droga:") @Html.DropDownList("Nombre", (IEnumerable<SelectListItem>)ViewBag.drogaList, new { required = "required", @class = "form-control" })
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    @Html.Label("Dosis:") @Html.DropDownList("Nombre", (IEnumerable<SelectListItem>)ViewBag.drogaList, new { required = "required", @class = "form-control" })
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    @*@Html.Label("Dosis del paciente"): @Html.TextBoxFor(model => model., new { @class = "form-control" })*@
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    @*@Html.Label("Forma de administración:"): @Html.TextBoxFor(model => model.Observaciones, new { @class = "form-control" })*@
+                </div>
+            </div>
+            <p><input type="submit" value="Agregar Medicamento &raquo;" class="btn btn-outline-dark"></p>
+        }
+    </div>
+</div>
 <div class="col-md-8 float-left">
     <table class="table table-hover ">
         <thead>
