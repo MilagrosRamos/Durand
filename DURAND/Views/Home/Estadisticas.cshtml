@@ -1,4 +1,6 @@
-﻿@{
+﻿@using DURAND.Models
+@model Estadistica
+@{
     ViewBag.Title = "Estadisticas";
     Layout = "~/Views/Shared/_LayoutInterno.cshtml";
 }
@@ -24,31 +26,40 @@
 </div>
 
 
+@*@{
+        foreach (Estadistica unaEstadistica in ViewBag.estadisticasList)
+        {
+            var data = google.visualization.arrayToDataTable([
+                [unaEstadistica.Nombre, unaEstadistica.Valor]
+            ]);
+        }
+    }*@
+
 @section head
 {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+        function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
 
-        var options = {
-          title: 'My Daily Activities'
-        };
+            var options = {
+                title: 'My Daily Activities' //el filtro que eligio
+            };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
-      }
+            chart.draw(data, options);
+        }
     </script>
 }  

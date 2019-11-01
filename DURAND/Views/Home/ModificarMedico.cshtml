@@ -1,4 +1,4 @@
-﻿    @using DURAND.Models
+﻿@using DURAND.Models
 @model Medico
 @{
     ViewBag.Title = "ModificarMedico";
@@ -15,7 +15,6 @@
         <div class="col-lg-6 col-md-4">
             @using (@Html.BeginForm("ModificarMedicoOk", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                //hacer que esto no se vea
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Hidden("Id:") @Html.HiddenFor(x => x.IdMedico)
