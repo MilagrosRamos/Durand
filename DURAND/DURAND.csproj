@@ -157,6 +157,7 @@
     <Compile Include="Helpers\FormatosHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\Droga.cs" />
+    <Compile Include="Models\DrogaXPaciente.cs" />
     <Compile Include="Models\Especialidades.cs" />
     <Compile Include="Models\HistoriaClinica.cs" />
     <Compile Include="Models\Medico.cs" />

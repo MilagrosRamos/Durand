@@ -14,7 +14,9 @@ namespace DURAND.Services
         public static List<SelectListItem> ObtenerTodosDropDown()
         {
             List<SelectListItem> listaDevolver = new List<SelectListItem>();
-            SelectListItem elemento = null;
+            SelectListItem  elemento = null;
+            String          strNombre, strDosis;
+            double          dblDosis;
 
             SqlDataReader currentReader = null;
 
@@ -29,9 +31,10 @@ namespace DURAND.Services
                         {
                             elemento            = new SelectListItem();
                             elemento.Value      = Convert.ToString((currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0));
-                            elemento.Text       = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
-                            //elemento.       = (currentReader["DosisStandard"] != DBNull.Value ? (string)currentReader["DosisStandard"] : "");
-
+                            strNombre           = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                            dblDosis            = (currentReader["DosisStandard"] != DBNull.Value ? (double)currentReader["DosisStandard"] : 0);
+                            strDosis            = dblDosis.ToString("0.00");
+                            elemento.Text       = string.Format ("{0} - {1} mg/m2 ",strNombre , strDosis);
                             listaDevolver.Add(elemento);
                         }
                     }
@@ -47,21 +50,20 @@ namespace DURAND.Services
             return listaDevolver;
         }
 
-        public static int AgregarDroga(Droga unaDroga)
+        public static int AgregarDroga(DrogaXPaciente unaDroga)
         {
             
             int intRegsAffected = 0;
 
             SqlParameter[] parameterArray = new SqlParameter[7];
 
-            //parameterArray[0] = new SqlParameter("@Id",             unaDroga.FechaVisita);
-            //parameterArray[1] = new SqlParameter("@DosisEstandar",  unaDroga.Peso);
-            //parameterArray[2] = new SqlParameter("@DosisPaciente",  unaDroga.Altura);
-            //parameterArray[3] = new SqlParameter("@IDPaciente",     unaDroga.Observaciones);
-            //parameterArray[4] = new SqlParameter("@Peso",           unaDroga.IDPaciente);
-            //parameterArray[5] = new SqlParameter("@Altura",         unaDroga.IDMedico);
-            //parameterArray[6] = new SqlParameter("@Observaciones",  unaDroga.IDMedico);
-            //parameterArray[7] = new SqlParameter("@IDDroga",        unaDroga.IDMedico);
+            parameterArray[0] = new SqlParameter("@DosisEstandar",  unaDroga.DosisEstandar);
+            parameterArray[1] = new SqlParameter("@DosisPaciente",  unaDroga.DosisPaciente);
+            parameterArray[2] = new SqlParameter("@IDPaciente",     unaDroga.IdPaciente);
+            parameterArray[3] = new SqlParameter("@Peso",           unaDroga.Peso);
+            parameterArray[4] = new SqlParameter("@Altura",         unaDroga.Altura);
+            parameterArray[5] = new SqlParameter("@Observaciones",  unaDroga.Observaciones);
+            parameterArray[6] = new SqlParameter("@IDDroga",        unaDroga.IdDroga);
 
             try
             {
