@@ -1,4 +1,4 @@
-﻿@using DURAND.Models
+﻿    @using DURAND.Models
 @model Medico
 @{
     ViewBag.Title = "ModificarMedico";
@@ -18,7 +18,7 @@
                 //hacer que esto no se vea
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Hidden("Id:") @Html.DisplayTextFor(x => x.IdMedico)
+                        @Html.Hidden("Id:") @Html.HiddenFor(x => x.IdMedico)
                     </div>
                 </div>
                 <div class="control-group form-group">

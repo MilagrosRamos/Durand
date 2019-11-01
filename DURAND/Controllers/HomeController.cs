@@ -55,6 +55,7 @@ namespace DURAND.Controllers
             return View();
         }
 
+        //ESTADISTICAS
         public ActionResult Estadisticas()
         {
             IEnumerable<SelectListItem> estadisticas = EstadisticasService.ObtenerTodosDropDown().ToList();
@@ -93,6 +94,7 @@ namespace DURAND.Controllers
         public ActionResult ModificarMedicoOk(Medico unMedico)
         {
             string strIDEspecialidad = Request["nombreEspecialidad"];
+            unMedico.Especialidad = Convert.ToInt32(strIDEspecialidad);
             int RegsAfec = MedicosService.ModificarMedico(unMedico);
 
             return View("PantallaPrincipal");

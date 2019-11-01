@@ -80,19 +80,18 @@ namespace DURAND.Services
             SqlParameter[] parameterArray = new SqlParameter[8];
 
 
-            parameterArray[0] = new SqlParameter("@IdMedico", unMedico.IdMedico);
-            parameterArray[1] = new SqlParameter("@Nombre", unMedico.Nombre);
-            parameterArray[2] = new SqlParameter("@Apellido", unMedico.Apellido);
-            parameterArray[3] = new SqlParameter("@Foto", unMedico.Foto);
+            parameterArray[0] = new SqlParameter("@IdMedico",       unMedico.IdMedico);
+            parameterArray[1] = new SqlParameter("@Nombre",         unMedico.Nombre);
+            parameterArray[2] = new SqlParameter("@Apellido",       unMedico.Apellido);
+            parameterArray[3] = new SqlParameter("@Foto",           unMedico.Foto);
             parameterArray[4] = new SqlParameter("@IDEspecialidad", unMedico.Especialidad);
-            parameterArray[5] = new SqlParameter("@Mail", unMedico.Mail);
-            parameterArray[6] = new SqlParameter("@Contrasenia", unMedico.Contrasenia);
-            parameterArray[7] = new SqlParameter("@DNI", unMedico.Dni);
+            parameterArray[5] = new SqlParameter("@Mail",           unMedico.Mail);
+            parameterArray[6] = new SqlParameter("@Contrasenia",    unMedico.Contrasenia);
+            parameterArray[7] = new SqlParameter("@DNI",            unMedico.Dni);
 
             try
             {
                 intRegsAffected = DatabaseHelper.ExecuteNonQuery("Medicos_ModificarMedico", parameterArray);
-
             }
             catch (Exception ex)
             {
@@ -153,7 +152,6 @@ namespace DURAND.Services
             try
             {
                 intRegsAffected = DatabaseHelper.ExecuteNonQuery("Medicos_AgregarMedico", parameterArray);
-
             }
             catch (Exception ex)
             {
