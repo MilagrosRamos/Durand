@@ -242,16 +242,20 @@ namespace DURAND.Controllers
             string strIdPAciente    = Request["IDPacientex"];
             string Altura           = Request["Altura"];
             string Peso             = Request["Peso"];
+            string Nombre           = Request["Nombre"];
+
             unaDroga.IdPaciente     = Convert.ToInt32(strIdPAciente);
             unaDroga.Altura         = float.Parse(Altura);
             unaDroga.Peso           = float.Parse(Peso);
+            unaDroga.IdDroga        = 6;
+            unaDroga.DosisEstandar  = 50;
 
             if (unaDroga != null)
             {
-                RegAfectados = DrogasService.AgregarDroga(unaDroga);
+                RegAfectados = DrogaXPacienteService.AgregarDroga(unaDroga);
 
             }
-            return View("AgregarMedicamentos",unaDroga.IdPaciente);
+            return View("AgregarMedicamento",unaDroga.IdPaciente);
         }
 
     }
