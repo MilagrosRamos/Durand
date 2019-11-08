@@ -58,11 +58,11 @@ namespace DURAND.Services
                         {
                             elemento                        = new DrogaXPaciente();
                             elemento.Id                     = Convert.ToInt32 ((currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0));
-                            elemento.DosisEstandar          = Convert.ToSingle((currentReader["DosisEstandar"] != DBNull.Value ? (float)currentReader["DosisEstandar"] : 0));
-                            elemento.DosisPaciente          = Convert.ToSingle((currentReader["DosisPaciente"] != DBNull.Value ? (float)currentReader["DosisPaciente"] : 0));
+                            elemento.DosisEstandar          = (currentReader["DosisEstandar"] != DBNull.Value ? Convert.ToSingle(currentReader["DosisEstandar"]) : 0);
+                            elemento.DosisPaciente          = (currentReader["DosisPaciente"] != DBNull.Value ? Convert.ToSingle(currentReader["DosisPaciente"]) : 0);
                             elemento.IdPaciente             = Convert.ToInt32((currentReader["IDPaciente"] != DBNull.Value ? (int)currentReader["IDPaciente"] : 0));
-                            elemento.Peso                   = Convert.ToSingle((currentReader["Peso"] != DBNull.Value ? (float)currentReader["Peso"] : 0));
-                            elemento.Altura                 = Convert.ToSingle((currentReader["Altura"] != DBNull.Value ? (float)currentReader["Altura"] : 0));
+                            elemento.Peso                   = ((currentReader["Peso"] != DBNull.Value ? Convert.ToSingle(currentReader["Peso"]) : 0));
+                            elemento.Altura                 = ((currentReader["Altura"] != DBNull.Value ? Convert.ToSingle(currentReader["Altura"]) : 0));
                             elemento.Observaciones          = (currentReader["Observaciones"] != DBNull.Value ? (string)currentReader["Observaciones"] : "");
                             elemento.IdDroga                = Convert.ToInt32((currentReader["IDDroga"] != DBNull.Value ? (int)currentReader["IDDroga"] : 0));
                             listaDevolver.Add(elemento);
