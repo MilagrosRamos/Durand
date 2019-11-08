@@ -38,31 +38,37 @@ namespace DURAND.Services
             return intRegsAffected;
         }
 
-        public static List<SelectListItem> ObtenerPorId(int id)
+        public static List<DrogaXPaciente> ObtenerPorId(int id)
         {
-            List<SelectListItem> listaDevolver = new List<SelectListItem>();
-            SelectListItem elemento = null;
-
-
+            List<DrogaXPaciente> listaDevolver = new List<DrogaXPaciente>();
+            DrogaXPaciente elemento = null;
+            SqlParameter[] parameterArray = new SqlParameter[1];
             SqlDataReader currentReader = null;
+
+            parameterArray[0] = new SqlParameter("@id", id);
 
             try
             {
-                currentReader = DatabaseHelper.ExecuteReader("DrogaXPaciente_ObtenerPorId");
+                currentReader = DatabaseHelper.ExecuteReader("DrogaXPaciente_ObtenerPorId", parameterArray);
                 if (currentReader != null)
                 {
                     if (currentReader.HasRows)
                     {
                         while (currentReader.Read())
                         {
-                            elemento = new SelectListItem();
-                            elemento.Value = Convert.ToString((currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0));
-                            
-                            
-                            //strNombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                            elemento                        = new DrogaXPaciente();
+                            elemento.Id                     = Convert.ToInt32 ((currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0));
+                            elemento.DosisEstandar          = Convert.ToSingle((currentReader["DosisEstandar"] != DBNull.Value ? (float)currentReader["DosisEstandar"] : 0));
+                            elemento.DosisPaciente          = Convert.ToSingle((currentReader["DosisPaciente"] != DBNull.Value ? (float)currentReader["DosisPaciente"] : 0));
+                            elemento.IdPaciente             = Convert.ToInt32((currentReader["IDPaciente"] != DBNull.Value ? (int)currentReader["IDPaciente"] : 0));
+                            elemento.Peso                   = Convert.ToSingle((currentReader["Peso"] != DBNull.Value ? (float)currentReader["Peso"] : 0));
+                            elemento.Altura                 = Convert.ToSingle((currentReader["Altura"] != DBNull.Value ? (float)currentReader["Altura"] : 0));
+                            elemento.Observaciones          = (currentReader["Observaciones"] != DBNull.Value ? (string)currentReader["Observaciones"] : "");
+                            elemento.IdDroga                = Convert.ToInt32((currentReader["IDDroga"] != DBNull.Value ? (int)currentReader["IDDroga"] : 0));
                             listaDevolver.Add(elemento);
                         }
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -75,16 +81,16 @@ namespace DURAND.Services
             return listaDevolver;
         }
 
-        private static Especialidades DataReaderToObject(SqlDataReader currentReader)
+        private static DrogaXPaciente DataReaderToObject(SqlDataReader currentReader)
         {
-            Especialidades returnEntity = null;
+            DrogaXPaciente returnEntity = null;
 
             if (currentReader != null)
             {
                 returnEntity = new DrogaXPaciente();
 
                 returnEntity.Id     = (currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0);
-                returnEntity.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                //returnEntity.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
             }
 
             return returnEntity;

@@ -228,15 +228,22 @@ namespace DURAND.Controllers
 
             unPaciente = PacientesService.ObtenerPorId(id);
 
+            //Para el dropdown 
             IEnumerable<SelectListItem> droga = DrogasService.ObtenerTodosDropDown().ToList();
             ViewBag.drogaList = droga;
             ViewBag.Paciente = unPaciente;
+            
+            //Para el foreach 
+            List<DrogaXPaciente>lista=DrogaXPacienteService.ObtenerPorId(id);
+            ViewBag.drogaXPacienteList = lista;
+
             return View();
         }
 
         [HttpPost]
         public ActionResult AgregarMedicamentoOk(DrogaXPaciente unaDroga)
         {
+            Paciente unPaciente;
             int RegAfectados;
 
             string strIdPAciente    = Request["IDPacientex"];
@@ -250,12 +257,24 @@ namespace DURAND.Controllers
             unaDroga.IdDroga        = 6;
             unaDroga.DosisEstandar  = 50;
 
+
             if (unaDroga != null)
             {
                 RegAfectados = DrogaXPacienteService.AgregarDroga(unaDroga);
 
             }
-            return View("AgregarMedicamento",unaDroga.IdPaciente);
+                    
+
+            unPaciente = PacientesService.ObtenerPorId(unaDroga.IdPaciente);
+            //Dropdown
+            IEnumerable<SelectListItem> droga = DrogasService.ObtenerTodosDropDown().ToList();
+            ViewBag.drogaList = droga;
+            ViewBag.Paciente = unPaciente;
+            //Lista
+            List<DrogaXPaciente> lista = DrogaXPacienteService.ObtenerPorId(unaDroga.IdPaciente);
+            ViewBag.drogaXPacienteList = lista;
+
+            return View("AgregarMedicamento",unaDroga);
         }
 
     }

@@ -54,14 +54,14 @@
             </thead>
             <tbody>
                 @{
-                    foreach (DrogaXPaciente unaDroga in ViewBag.visitasList)
+                    foreach (DrogaXPaciente unaDroga in ViewBag.drogaXPacienteList)
                     {
-                        @*<tr>
-                            <th scope="row">@FormatosHelper.FormatearFecha(unaVisita.FechaVisita)</th>
-                            <td>@unaVisita.Altura cm</td>
-                            <td>@unaVisita.Peso kg</td>
-                            <td>@unaVisita.Observaciones</td>
-                        </tr>*@
+                <tr>
+                    <td>@unaDroga.IdDroga</td>
+                    <td>@unaDroga.DosisEstandar kg</td>
+                    <td>@unaDroga.DosisPaciente</td>
+                    <td>@unaDroga.Observaciones</td>
+                </tr>
                     }
                 }
             </tbody>

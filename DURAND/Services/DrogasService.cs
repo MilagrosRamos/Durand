@@ -50,8 +50,6 @@ namespace DURAND.Services
             return listaDevolver;
         }
 
-        
-
         private static Droga DataReaderToObject(SqlDataReader currentReader)
         {
             Droga returnEntity = null;
