@@ -58,7 +58,6 @@
                         @Html.ValidationMessageFor(x => x.Altura, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                //HACER REQUIRED
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Peso:") @Html.TextBoxFor(x => x.Peso, new { placeholder = "Peso", required = "required", @class = "form-control" })
@@ -75,7 +74,6 @@
                         @Html.Label("Localidad:") @Html.DropDownList("nombreLocalidad", (IEnumerable<SelectListItem>)ViewBag.localidadList, new { @class = "form-control" })
                     </div>
                 </div>
-                //FOTO
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("DNI:") @Html.TextBoxFor(x => x.DNI, new { placeholder = "DNI", @class = "form-control", required = "required", maxlength = 8 })
@@ -90,7 +88,6 @@
                 <p><input type="submit" value="Registrar Paciente &raquo;" class="btn btn-outline-dark"></p>
             }
         </div>
-                   
                         @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger" })
               
@@ -111,24 +108,6 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-lg-6 float-xl-right">
-                <div class="controls">
-                    @Html.Label("Fecha de nacimiento:") @Html.TextBoxFor(x => x.FechaDeNacimiento, new { @type = "date", @class = "form-control" })
-
-                    @Html.Label("Altura:") @Html.TextBoxFor(x => x.Altura, new { placeholder = "Altura", required = "required", @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Altura, "", new { @class = "text-danger" })
-
-                    @Html.Label("Peso:") @Html.TextBoxFor(x => x.Peso, new { placeholder = "Peso", required = "required", @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.Peso, "", new { @class = "text-danger" })
-
-                    @Html.Label("Provincia:") @Html.DropDownList("nombreProvincia", (IEnumerable<SelectListItem>)ViewBag.provinciaList, new { required = "required", @class = "form-control" })
-
-                    @Html.Label("Localidad:") @Html.DropDownList("nombreLocalidad", (IEnumerable<SelectListItem>)ViewBag.localidadList, new { required = "required", @class = "form-control" })
-
-                    @Html.Label("Patologia:") @Html.DropDownList("nombrePatologia", (IEnumerable<SelectListItem>)ViewBag.patologiaList, new { required = "required", @class = "form-control" })
-                    <p><input type="submit" value="Registrar Paciente &raquo;" class="btn btn-outline-dark" style="margin-top: 15px;" ></p>
-                </div>
-            </div>
             
         }
     </div>

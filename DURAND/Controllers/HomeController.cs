@@ -254,22 +254,19 @@ namespace DURAND.Controllers
             unaDroga.IdPaciente     = Convert.ToInt32(strIdPAciente);
             unaDroga.Altura         = float.Parse(Altura);
             unaDroga.Peso           = float.Parse(Peso);
-            unaDroga.IdDroga        = 6;
-            unaDroga.DosisEstandar  = 50;
-
 
             if (unaDroga != null)
             {
                 RegAfectados = DrogaXPacienteService.AgregarDroga(unaDroga);
-
             }
-                    
 
             unPaciente = PacientesService.ObtenerPorId(unaDroga.IdPaciente);
+            
             //Dropdown
             IEnumerable<SelectListItem> droga = DrogasService.ObtenerTodosDropDown().ToList();
             ViewBag.drogaList = droga;
             ViewBag.Paciente = unPaciente;
+            
             //Lista
             List<DrogaXPaciente> lista = DrogaXPacienteService.ObtenerPorId(unaDroga.IdPaciente);
             ViewBag.drogaXPacienteList = lista;
