@@ -156,6 +156,7 @@
     <Compile Include="Helpers\DatabaseHelper.cs" />
     <Compile Include="Helpers\FormatosHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="Models\EstadisticaFiltrada.cs" />
     <Compile Include="Models\Estadistica.cs" />
     <Compile Include="Models\Droga.cs" />
     <Compile Include="Models\Especialidades.cs" />

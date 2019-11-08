@@ -47,45 +47,10 @@ namespace DURAND.Services
         }
 
 
-        public static List<SelectListItem> PacientesXObraSocial()
+        public static List<EstadisticaFiltrada> VisitasXMes()
         {
-            List<SelectListItem> listaDevolver = new List<SelectListItem>();
-            SelectListItem elemento = null;
-
-            SqlDataReader currentReader = null;
-
-            try
-            {
-                currentReader = DatabaseHelper.ExecuteReader("Estadisticas_PacientesXObraSocial");
-                if (currentReader != null)
-                {
-                    if (currentReader.HasRows)
-                    {
-                        while (currentReader.Read())
-                        {
-                            elemento = new SelectListItem();
-                            elemento.Text = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
-                            elemento.Value = Convert.ToString((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
-
-                            listaDevolver.Add(elemento);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomLog.LogException(ex);
-            }
-
-            DatabaseHelper.CloseAndDisposeReader(ref currentReader);
-
-            return listaDevolver;
-        }
-
-        public static List<SelectListItem> VisitasXMes()
-        {
-            List<SelectListItem> listaDevolver = new List<SelectListItem>();
-            SelectListItem elemento = null;
+            List<EstadisticaFiltrada> listaDevolver = new List<EstadisticaFiltrada>();
+            EstadisticaFiltrada elemento = null;
 
             SqlDataReader currentReader = null;
 
@@ -98,9 +63,9 @@ namespace DURAND.Services
                     {
                         while (currentReader.Read())
                         {
-                            elemento = new SelectListItem();
-                            elemento.Text = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
-                            elemento.Value = Convert.ToString((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
+                            elemento = new EstadisticaFiltrada();
+                            elemento.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                            elemento.Valor = Convert.ToInt32((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
 
                             listaDevolver.Add(elemento);
                         }
@@ -117,10 +82,45 @@ namespace DURAND.Services
             return listaDevolver;
         }
 
-        public static List<SelectListItem> PacientesxPatologias()
+        public static List<EstadisticaFiltrada> PacientesXObraSocial()
         {
-            List<SelectListItem> listaDevolver = new List<SelectListItem>();
-            SelectListItem elemento = null;
+            List<EstadisticaFiltrada> listaDevolver = new List<EstadisticaFiltrada>();
+            EstadisticaFiltrada elemento = null;
+
+            SqlDataReader currentReader = null;
+
+            try
+            {
+                currentReader = DatabaseHelper.ExecuteReader("Estadisticas_PacientesXObraSocial");
+                if (currentReader != null)
+                {
+                    if (currentReader.HasRows)
+                    {
+                        while (currentReader.Read())
+                        {
+                            elemento = new EstadisticaFiltrada();
+                            elemento.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                            elemento.Valor = Convert.ToInt32((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
+
+                            listaDevolver.Add(elemento);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomLog.LogException(ex);
+            }
+
+            DatabaseHelper.CloseAndDisposeReader(ref currentReader);
+
+            return listaDevolver;
+        }
+
+        public static List<EstadisticaFiltrada> PacientesxPatologias()
+        {
+            List<EstadisticaFiltrada> listaDevolver = new List<EstadisticaFiltrada>();
+            EstadisticaFiltrada elemento = null;
 
             SqlDataReader currentReader = null;
 
@@ -133,9 +133,9 @@ namespace DURAND.Services
                     {
                         while (currentReader.Read())
                         {
-                            elemento = new SelectListItem();
-                            elemento.Text = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
-                            elemento.Value = Convert.ToString((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
+                            elemento = new EstadisticaFiltrada();
+                            elemento.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                            elemento.Valor = Convert.ToInt32((currentReader["Valor"] != DBNull.Value ? (int)currentReader["Valor"] : 0));
 
                             listaDevolver.Add(elemento);
                         }

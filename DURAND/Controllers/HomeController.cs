@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using DURAND.Models;
 using DURAND.Services;
+using Newtonsoft.Json;
 
 namespace DURAND.Controllers
 {
@@ -60,8 +61,78 @@ namespace DURAND.Controllers
         {
             IEnumerable<SelectListItem> estadisticas = EstadisticasService.ObtenerTodosDropDown().ToList();
             ViewBag.estadisticaList = estadisticas;
+
+            /* int intIdEstadistica = 0;
+             string strTituloEstadistica = "";
+             IEnumerable<EstadisticaFiltrada> datosDeEstadisticas = null;
+
+             if (Request["nombreEstadística"] != null)
+             {
+                 intIdEstadistica = Convert.ToInt32(Request["nombreEstadística"]);
+             }
+
+             switch (intIdEstadistica)
+             {
+                 case 1:
+                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.VisitasXMes();
+                     strTituloEstadistica = "Visitas por Mes";
+                     break;
+                 case 3:
+                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.PacientesXObraSocial();
+                     strTituloEstadistica = "Pacientes por Obra Social";
+                     break;
+                 case 6:
+                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.PacientesxPatologias();
+                     strTituloEstadistica = "Pacientes por Patología";
+                     break;
+
+                 default:
+                     break;
+             }
+
+             ViewBag.ValoresList = datosDeEstadisticas;
+             ViewBag.TituloEstadistica = strTituloEstadistica;*/
+
             return View();
         }
+        [HttpPost]
+        public string Estadisticas(string filtro = "3")
+        {
+            int intIdEstadistica = 0;
+            //IEnumerable<EstadisticaFiltrada> datosDeEstadisticas = null;
+
+            if (filtro != null)
+            {
+                intIdEstadistica = Convert.ToInt32(filtro);
+            }
+
+
+            IEnumerable<SelectListItem> estadisticas = EstadisticasService.ObtenerTodosDropDown().ToList();
+            ViewBag.estadisticaList = estadisticas;
+            Object[] objetos;
+            switch (intIdEstadistica)
+            {
+                case 1:
+                    objetos =  EstadisticasService.VisitasXMes().ToArray();
+                    break;
+                case 3:
+                     objetos =  EstadisticasService.PacientesXObraSocial().ToArray();
+                    break;
+                case 6:
+                     objetos =  EstadisticasService.PacientesxPatologias().ToArray();
+                    break;
+
+                default:
+                    objetos = null;
+                    break;
+            }
+
+            string json = JsonConvert.SerializeObject(objetos);
+            return json;
+
+            //return View();
+        }
+
 
         //MEDICO
         public ActionResult RegistrarMedico()
@@ -81,7 +152,7 @@ namespace DURAND.Controllers
             return View("Login");
         }
 
-        public ActionResult ModificarMedico()//no cambia los datos hasta que se abre devuelta!!!!
+        public ActionResult ModificarMedico()
         {
             IEnumerable<SelectListItem> especialidades = EspecialidadesService.ObtenerTodosDropDown().ToList();
             ViewBag.especialidadList = especialidades;
@@ -213,9 +284,9 @@ namespace DURAND.Controllers
             Paciente elPaciente = new Paciente();
             List<Visita> visitasList = new List<Visita>();
 
-            string strIdPAciente = Request["IDPacientex"];
+            string strIdPaciente = Request["IDPacientex"];
             string strIDMedico = Request["nombreMedico"];
-            unaVisita.IDPaciente = Convert.ToInt32(strIdPAciente);
+            unaVisita.IDPaciente = Convert.ToInt32(strIdPaciente);
             unaVisita.IDMedico = Convert.ToInt32(strIDMedico);
             if (unaVisita != null)
             {
