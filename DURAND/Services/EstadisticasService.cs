@@ -117,7 +117,7 @@ namespace DURAND.Services
             return listaDevolver;
         }
 
-        public static List<EstadisticaFiltrada> PacientesxPatologias()
+        public static List<EstadisticaFiltrada> PacientesXPatologias()
         {
             List<EstadisticaFiltrada> listaDevolver = new List<EstadisticaFiltrada>();
             EstadisticaFiltrada elemento = null;
@@ -126,7 +126,7 @@ namespace DURAND.Services
 
             try
             {
-                currentReader = DatabaseHelper.ExecuteReader("Estadisticas_PacientesxPatologias");
+                currentReader = DatabaseHelper.ExecuteReader("Estadisticas_PacientesXPatologias");
                 if (currentReader != null)
                 {
                     if (currentReader.HasRows)

@@ -38,48 +38,51 @@
             },
             success: function (objetos) {
                 if (objetos != null) {
-                    var as = JSON.parse(objetos);
+                    var jsonData = JSON.parse(objetos);
+                    /*Detectamos que el array del JSON no era equivalente al formato que requeria la API de google charts.
+                     Encontramos en internet una funcion que transforma el codigo del json parseado a el formato requerido.
+                     Fuente: https://stackoverflow.com/questions/43226648/how-to-convert-json-to-google-visualization-datatable */
+
+                    //COMIENZO DEL CODIGO ---------------------------------------------------------
+                    var gglData = [];
+                    if (jsonData.length > 0) {
+                        // load column headings (el nombre del dato)
+                        var colHead = [];
+                        Object.keys(jsonData[0]).forEach(function (key) {
+                            colHead.push(key);
+                        });
+                        gglData.push(colHead);
+
+                        // load data rows (el dato en si --> el valor del nombre y el valor del valor)
+                        jsonData.forEach(function (row) {
+                            var gglRow = [];
+                            Object.keys(row).forEach(function (key) {
+                                gglRow.push(row[key]);
+                            });
+                            gglData.push(gglRow);
+                        });
+                    }
+                    //FIN DEL CODIGO OBTENIDO ---------------------------------------------------------
+
+
                     google.charts.load('current', { 'packages': ['corechart'] });
                     google.charts.setOnLoadCallback(drawChart);
-                    function drawChart() {
-                        var name = as[0].Nombre;
-                        var val = as[0].Valor;
-                        var data = google.visualization.arrayToDataTable([
-                            [name, val]
-                           
-                        ]);
 
-                       /*for (var i = 0; i < as.length; i++) {
-                            var data = google.visualization.arrayToDataTable([
-                                [as[i].Nombre, as[i].Valor]
-                            ]);*/
+                    function drawChart() {
+
+                        var data = google.visualization.arrayToDataTable(gglData);
+
+
+                        var options = {
+                            title: 'Estadística'
+                        };
 
                         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
                         chart.draw(data, options);
                     }
-                    /*function drawCFDhart() {
-                        /*for (var i = 0; i < as.length; i++) {
-                            var data = google.visualization.arrayToDataTable([
-                                [as[i].Nombre, as[i].Valor]
-                            ]);*/
-                    /* var data = google.visualization.arrayToDataTable([
-                         ['Work', 11],
-                         ['Eat', 2],
-                         ['Commute', 2],
-                         ['Watch TV', 2]
-                         ]);
-                         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                         chart.draw(data, options);
-                     }*/
                 }
             }
         });
-           
     });
-
-
-
 
 </script>

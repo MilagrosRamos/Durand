@@ -74,15 +74,15 @@ namespace DURAND.Controllers
              switch (intIdEstadistica)
              {
                  case 1:
-                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.VisitasXMes();
+                     datosDeEstadisticas = EstadisticasService.VisitasXMes();
                      strTituloEstadistica = "Visitas por Mes";
                      break;
                  case 3:
-                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.PacientesXObraSocial();
+                     datosDeEstadisticas = EstadisticasService.PacientesXObraSocial();
                      strTituloEstadistica = "Pacientes por Obra Social";
                      break;
                  case 6:
-                     datosDeEstadisticas = datosDeEstadisticas = EstadisticasService.PacientesxPatologias();
+                     datosDeEstadisticas = EstadisticasService.PacientesxPatologias();
                      strTituloEstadistica = "Pacientes por Patología";
                      break;
 
@@ -116,10 +116,10 @@ namespace DURAND.Controllers
                     objetos =  EstadisticasService.VisitasXMes().ToArray();
                     break;
                 case 3:
-                     objetos =  EstadisticasService.PacientesXObraSocial().ToArray();
+                     objetos =  EstadisticasService.PacientesXPatologias().ToArray();
                     break;
                 case 6:
-                     objetos =  EstadisticasService.PacientesxPatologias().ToArray();
+                     objetos =  EstadisticasService.PacientesXObraSocial().ToArray();
                     break;
 
                 default:
