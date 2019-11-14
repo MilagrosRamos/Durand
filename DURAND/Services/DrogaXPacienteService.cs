@@ -65,6 +65,7 @@ namespace DURAND.Services
                             elemento.Altura                 = ((currentReader["Altura"] != DBNull.Value ? Convert.ToSingle(currentReader["Altura"]) : 0));
                             elemento.Observaciones          = (currentReader["Observaciones"] != DBNull.Value ? (string)currentReader["Observaciones"] : "");
                             elemento.IdDroga                = Convert.ToInt32((currentReader["IDDroga"] != DBNull.Value ? (int)currentReader["IDDroga"] : 0));
+                            elemento.NombreDroga            = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
                             listaDevolver.Add(elemento);
                         }
                     }

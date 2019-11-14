@@ -267,7 +267,7 @@ namespace DURAND.Controllers
             ViewBag.drogaList = droga;
             ViewBag.Paciente = unPaciente;
             
-            //Lista
+            //Para el foreach
             List<DrogaXPaciente> lista = DrogaXPacienteService.ObtenerPorId(unaDroga.IdPaciente);
             ViewBag.drogaXPacienteList = lista;
 

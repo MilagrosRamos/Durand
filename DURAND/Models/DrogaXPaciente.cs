@@ -15,6 +15,7 @@ namespace DURAND.Models
         public float    Altura          { get; set; }
         public string   Observaciones   { get; set; }
         public int      IdDroga         { get; set; }
+        public string   NombreDroga     { get; set; }
 
         public DrogaXPaciente()
         {
@@ -26,6 +27,7 @@ namespace DURAND.Models
             Altura          = 0;
             Observaciones   = "";
             IdDroga         = 0;
+            NombreDroga     = "";
         }
     }
 }
