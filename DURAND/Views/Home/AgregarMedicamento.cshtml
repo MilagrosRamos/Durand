@@ -35,7 +35,7 @@
             </div>
             <div class="control-group form-group">
                 <div class="controls">
-                    @Html.Label("Forma de administración:"): @Html.TextBoxFor(model => model.Observaciones, new { required = "required", @class = "form-control" })
+                    @Html.Label("Forma de administración"): @Html.TextBoxFor(model => model.Observaciones, new { required = "required", @class = "form-control" })
                 </div>
             </div>
             <p><input type="submit" value="Agregar Medicamento &raquo;" class="btn btn-outline-dark"></p>
@@ -58,7 +58,7 @@
                     {
                 <tr>
                     <td>@unaDroga.NombreDroga</td>
-                    <td>@unaDroga.DosisEstandar kg</td>
+                    <td>@unaDroga.DosisEstandar</td>
                     <td>@unaDroga.DosisPaciente</td>
                     <td>@unaDroga.Observaciones</td>
                 </tr>

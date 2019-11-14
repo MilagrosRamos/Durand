@@ -305,6 +305,7 @@ namespace DURAND.Controllers
             unaDroga.Altura         = float.Parse(Altura);
             unaDroga.Peso           = float.Parse(Peso);
             unaDroga.IdDroga        = 3;
+            unaDroga.DosisEstandar  = 750;
 
             if (unaDroga != null)
             {
