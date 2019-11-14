@@ -52,7 +52,7 @@ namespace DURAND.Services
         public static int AgregarVisita(Visita unaVisita)
         {
             int intRegsAffected = 0;
-            //Visita returnEntity = null;
+
             SqlParameter[] parameterArray = new SqlParameter[6];
 
             parameterArray[0] = new SqlParameter("@FechaVisita",    unaVisita.FechaVisita);

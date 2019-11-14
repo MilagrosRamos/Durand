@@ -250,15 +250,22 @@ namespace DURAND.Controllers
             Paciente elPaciente = new Paciente();
             List<Visita> visitasList = new List<Visita>();
 
+
             string strIdPaciente = Request["IDPacientex"];
             string strIDMedico = Request["nombreMedico"];
             unaVisita.IDPaciente = Convert.ToInt32(strIdPaciente);
             unaVisita.IDMedico = Convert.ToInt32(strIDMedico);
+
+            string strIdPAciente    = Request["IDPacientex"];
+            string strIDMedico      = Request["nombreMedico"];
+            unaVisita.IDPaciente    = Convert.ToInt32(strIdPAciente);
+            unaVisita.IDMedico      = Convert.ToInt32(strIDMedico);
+
             if (unaVisita != null)
             {
-                elPaciente = PacientesService.ObtenerPorId(unaVisita.IDPaciente);
-                RegAfectados = VisitasService.AgregarVisita(unaVisita);
-                visitasList = VisitasService.ObtenerPorIdPaciente(elPaciente.Id);
+                elPaciente          = PacientesService.ObtenerPorId(unaVisita.IDPaciente);
+                RegAfectados        = VisitasService.AgregarVisita(unaVisita);
+                visitasList         = VisitasService.ObtenerPorIdPaciente(elPaciente.Id);
             }
 
             ViewBag.Paciente = elPaciente;
@@ -277,12 +284,50 @@ namespace DURAND.Controllers
 
             unPaciente = PacientesService.ObtenerPorId(id);
 
-            IEnumerable<SelectListItem> droga= DrogasService.ObtenerTodosDropDown().ToList();
+            //Para el dropdown 
+            IEnumerable<SelectListItem> droga = DrogasService.ObtenerTodosDropDown().ToList();
             ViewBag.drogaList = droga;
+            ViewBag.Paciente = unPaciente;
             
-            // hay que traer la lista de drogas, a su vez el paciente para poder hacer el calculo automatico 
+            //Para el foreach 
+            List<DrogaXPaciente>lista=DrogaXPacienteService.ObtenerPorId(id);
+            ViewBag.drogaXPacienteList = lista;
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AgregarMedicamentoOk(DrogaXPaciente unaDroga)
+        {
+            Paciente unPaciente;
+            int RegAfectados;
+
+            string strIdPAciente    = Request["IDPacientex"];
+            string Altura           = Request["Altura"];
+            string Peso             = Request["Peso"];
+            string Nombre           = Request["Nombre"];
+
+            unaDroga.IdPaciente     = Convert.ToInt32(strIdPAciente);
+            unaDroga.Altura         = float.Parse(Altura);
+            unaDroga.Peso           = float.Parse(Peso);
+
+            if (unaDroga != null)
+            {
+                RegAfectados = DrogaXPacienteService.AgregarDroga(unaDroga);
+            }
+
+            unPaciente = PacientesService.ObtenerPorId(unaDroga.IdPaciente);
+            
+            //Dropdown
+            IEnumerable<SelectListItem> droga = DrogasService.ObtenerTodosDropDown().ToList();
+            ViewBag.drogaList = droga;
+            ViewBag.Paciente = unPaciente;
+            
+            //Para el foreach
+            List<DrogaXPaciente> lista = DrogaXPacienteService.ObtenerPorId(unaDroga.IdPaciente);
+            ViewBag.drogaXPacienteList = lista;
+
+            return View("AgregarMedicamento",unaDroga);
         }
 
     }

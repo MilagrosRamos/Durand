@@ -159,6 +159,7 @@
     <Compile Include="Models\EstadisticaFiltrada.cs" />
     <Compile Include="Models\Estadistica.cs" />
     <Compile Include="Models\Droga.cs" />
+    <Compile Include="Models\DrogaXPaciente.cs" />
     <Compile Include="Models\Especialidades.cs" />
     <Compile Include="Models\HistoriaClinica.cs" />
     <Compile Include="Models\Medico.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Models\Visita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DrogasService.cs" />
+    <Compile Include="Services\DrogaXPacienteService.cs" />
     <Compile Include="Services\EstadisticasService.cs" />
     <Compile Include="Services\SexosService.cs" />
     <Compile Include="Services\ProvinciasService.cs" />

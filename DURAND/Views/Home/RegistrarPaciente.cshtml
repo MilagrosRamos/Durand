@@ -13,11 +13,20 @@
 
         @using (@Html.BeginForm("RegistrarPacienteOk", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
                     </div>
+
+        <div class="col-md-4 col-lg-6 float-left">
+            <div class="control-group form-group">
+                <div class="controls">
+                    @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+                </div>
+
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
@@ -33,18 +42,6 @@
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Obra Social:") @Html.DropDownList("nombreObraSocial", (IEnumerable<SelectListItem>)ViewBag.obraSocialList, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls">
-                        @Html.Label("Domicilio:") @Html.TextBoxFor(x => x.Domicilio, new { placeholder = "Domicilio", required = "required", @class = "form-control" })
-                        @Html.ValidationMessageFor(x => x.Domicilio, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls">
-                        @Html.Label("Telefono:") @Html.TextBoxFor(x => x.Telefono, new { placeholder = "Telefono", required = "required", @class = "form-control" })
-                        @Html.ValidationMessageFor(x => x.Telefono, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
@@ -66,27 +63,64 @@
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Provincia:") @Html.DropDownList("nombreProvincia", (IEnumerable<SelectListItem>)ViewBag.provinciaList, new { @class = "form-control" })
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls">
-                        @Html.Label("Localidad:") @Html.DropDownList("nombreLocalidad", (IEnumerable<SelectListItem>)ViewBag.localidadList, new { @class = "form-control" })
-                    </div>
-                </div>
-                //FOTO
-                <div class="control-group form-group">
-                    <div class="controls">
-                        @Html.Label("DNI:") @Html.TextBoxFor(x => x.DNI, new { placeholder = "DNI", @class = "form-control", required = "required", maxlength = 8 })
-                        @Html.ValidationMessageFor(x => x.DNI, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls">
                         @Html.Label("Patologia:") @Html.DropDownList("nombrePatologia", (IEnumerable<SelectListItem>)ViewBag.patologiaList, new { @class = "form-control" })
                     </div>
                 </div>
+
                 <p><input type="submit" value="Registrar Paciente &raquo;" class="btn btn-outline-dark"></p>
             }
         </div>
 </div>
+
+
+                <p><input type="submit" value="Registrar Paciente &raquo;" class="btn btn-outline-dark"></p>
+
+
+            </div>
+            <div class="col-md-4 col-lg-6 float-left">
+                <div class="controls">
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("DNI:") @Html.TextBoxFor(x => x.DNI, new { placeholder = "DNI", required = "required", @class = "form-control", maxlength = 8 })
+                            @Html.ValidationMessageFor(x => x.DNI, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Sexo:") @Html.DropDownList("nombreSexo", (IEnumerable<SelectListItem>)ViewBag.sexoList, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Obra Social:") @Html.DropDownList("nombreObraSocial", (IEnumerable<SelectListItem>)ViewBag.obraSocialList, new { required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Domicilio:") @Html.TextBoxFor(x => x.Domicilio, new { placeholder = "Domicilio", required = "required", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Domicilio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Telefono:") @Html.TextBoxFor(x => x.Telefono, new { placeholder = "Telefono", required = "required", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Telefono, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Localidad:") @Html.DropDownList("nombreLocalidad", (IEnumerable<SelectListItem>)ViewBag.localidadList, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            @Html.Label("Provincia:") @Html.DropDownList("nombreProvincia", (IEnumerable<SelectListItem>)ViewBag.provinciaList, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            }
