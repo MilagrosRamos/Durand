@@ -250,16 +250,10 @@ namespace DURAND.Controllers
             Paciente elPaciente = new Paciente();
             List<Visita> visitasList = new List<Visita>();
 
-
             string strIdPaciente = Request["IDPacientex"];
             string strIDMedico = Request["nombreMedico"];
             unaVisita.IDPaciente = Convert.ToInt32(strIdPaciente);
             unaVisita.IDMedico = Convert.ToInt32(strIDMedico);
-
-            string strIdPAciente    = Request["IDPacientex"];
-            string strIDMedico      = Request["nombreMedico"];
-            unaVisita.IDPaciente    = Convert.ToInt32(strIdPAciente);
-            unaVisita.IDMedico      = Convert.ToInt32(strIDMedico);
 
             if (unaVisita != null)
             {
@@ -310,6 +304,7 @@ namespace DURAND.Controllers
             unaDroga.IdPaciente     = Convert.ToInt32(strIdPAciente);
             unaDroga.Altura         = float.Parse(Altura);
             unaDroga.Peso           = float.Parse(Peso);
+            unaDroga.IdDroga        = 3;
 
             if (unaDroga != null)
             {
@@ -327,7 +322,7 @@ namespace DURAND.Controllers
             List<DrogaXPaciente> lista = DrogaXPacienteService.ObtenerPorId(unaDroga.IdPaciente);
             ViewBag.drogaXPacienteList = lista;
 
-            return View("AgregarMedicamento",unaDroga);
+            return View("AgregarMedicamento", unaDroga);
         }
 
     }
