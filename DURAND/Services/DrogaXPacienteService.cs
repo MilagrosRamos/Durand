@@ -91,7 +91,7 @@ namespace DURAND.Services
                 returnEntity = new DrogaXPaciente();
 
                 returnEntity.Id     = (currentReader["Id"] != DBNull.Value ? (int)currentReader["Id"] : 0);
-                //returnEntity.Nombre = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
+                returnEntity.NombreDroga = (currentReader["Nombre"] != DBNull.Value ? (string)currentReader["Nombre"] : "");
             }
 
             return returnEntity;

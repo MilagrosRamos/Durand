@@ -225,11 +225,13 @@ namespace DURAND.Controllers
             Visita          modelo = new Visita();
             List<Medico>    medicoList;
             Paciente        unPaciente;
-
+            Patologia unaPatologia;
+            ObraSocial unaObraSocial;
 
             unPaciente = PacientesService.ObtenerPorId(id);
-
             medicoList = MedicosService.ObtenerTodos();
+            unaObraSocial = ObrasSocialesService.ObtenerPorId(unPaciente.IDObraSocial);
+            unaPatologia = PatologiasService.ObtenerPorId(unPaciente.IDPatologia);
 
             IEnumerable<SelectListItem> items = medicoList.Select(c => new SelectListItem
                     {
@@ -237,6 +239,8 @@ namespace DURAND.Controllers
                         Text = c.Nombre
                     });
 
+            ViewBag.NombreObraSocial = unaObraSocial.Nombre;
+            ViewBag.NombrePatologia = unaPatologia.Nombre;
             ViewBag.Paciente = unPaciente;
             ViewBag.medicoList = items;
             
@@ -284,9 +288,9 @@ namespace DURAND.Controllers
             ViewBag.Paciente = unPaciente;
             
             //Para el foreach 
-            List<DrogaXPaciente>lista=DrogaXPacienteService.ObtenerPorId(id);
+            List<DrogaXPaciente>lista = DrogaXPacienteService.ObtenerPorId(id);
             ViewBag.drogaXPacienteList = lista;
-
+             
             return View();
         }
 
@@ -301,11 +305,11 @@ namespace DURAND.Controllers
             string Peso             = Request["Peso"];
             string Nombre           = Request["Nombre"];
 
+
             unaDroga.IdPaciente     = Convert.ToInt32(strIdPAciente);
             unaDroga.Altura         = float.Parse(Altura);
             unaDroga.Peso           = float.Parse(Peso);
-            unaDroga.IdDroga        = 3;
-            unaDroga.DosisEstandar  = 750;
+            unaDroga.IdDroga        = Convert.ToInt32(Nombre);
 
             if (unaDroga != null)
             {

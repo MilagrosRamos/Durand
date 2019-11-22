@@ -42,7 +42,7 @@
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Contraseña:")@Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "*****", required = "required", @class = "form-control", Type = "password", maxlength = 15})
+                        @Html.Label("Contraseña:")@Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "Contraseña", required = "required", @class = "form-control", Type = "password", maxlength = 15})
                         @Html.ValidationMessageFor(x => x.Contrasenia, "", new { @class = "text-danger"})
                     </div>
                 </div>
