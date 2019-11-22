@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using DURAND.Models;
 using DURAND.Services;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace DURAND.Controllers
 {
@@ -115,6 +116,26 @@ namespace DURAND.Controllers
             unMedico.Especialidad   = Convert.ToInt32(strEspecialidad);
             int RegsAfec            = MedicosService.AgregarMedico(unMedico);
 
+            if (RegsAfec > 0)
+            {
+                if (Request.Files[0].FileName != "")
+                {
+                    string strNombreArchivo = System.IO.Path.Combine(Server.MapPath("~/images"), RegsAfec.ToString() + ".jpg");
+                    string strRutaRelativa = "/images/" + RegsAfec.ToString() + ".jpg";
+                    Request.Files[0].SaveAs(strNombreArchivo);
+
+                    Medico currentMedico;
+                    currentMedico = MedicosService.ObtenerPorId(RegsAfec);
+                    if (currentMedico != null)
+                    {
+                        currentMedico.Foto = strRutaRelativa;
+                        int intRegsAffected = MedicosService.ModificarMedico(currentMedico);
+
+                    }
+                }
+                // Se púdo registrar entonces verifico si vino una imagen.
+                // La obtengo "Request.Files.Count", la almaceno en el disco con "/imagesn/id.jpg" y acutlaizo el registro del Medico (campo foto)
+            }
             return View("Login");
         }
 

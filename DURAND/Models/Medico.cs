@@ -16,6 +16,8 @@ namespace DURAND.Models
         string      _mail;
         string      _contrasenia;
 
+        
+
         [StringLength (8, ErrorMessage = "Es un DNI incorrecto")]
         int         _dni;
 

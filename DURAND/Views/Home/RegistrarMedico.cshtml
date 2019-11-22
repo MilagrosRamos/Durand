@@ -13,22 +13,21 @@
         </h1>
     </div>
     <div class="row">
-        <div class = "col-lg-6 col-md-4">
+        <div class="col-lg-6 col-md-4">
             @using (@Html.BeginForm("RegistrarMedicoOK", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control"})
-                        @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger"})
+                        @Html.Label("Nombre:") @Html.TextBoxFor(x => x.Nombre, new { placeholder = "Nombre", required = "required", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", required = "required", @class = "form-control"})
-                        @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger"})
+                        @Html.Label("Apellido:") @Html.TextBoxFor(x => x.Apellido, new { placeholder = "Apellido", required = "required", @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Apellido, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                //FOTO
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Especialidad:") @Html.DropDownList("nombreEspecialidad", (IEnumerable<SelectListItem>)ViewBag.especialidadList, new { @class = "form-control", required = "required" })
@@ -37,19 +36,26 @@
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("Mail:")@Html.TextBoxFor(x => x.Mail, new { placeholder = "Mail", required = "required", @class = "form-control" })
-                        @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        @Html.Label("Contraseña:")@Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "Contraseña", required = "required", @class = "form-control", Type = "password", maxlength = 15})
-                        @Html.ValidationMessageFor(x => x.Contrasenia, "", new { @class = "text-danger"})
+                        @Html.Label("Contraseña:")@Html.TextBoxFor(x => x.Contrasenia, new { placeholder = "Contraseña", required = "required", @class = "form-control", Type = "password", maxlength = 15 })
+                        @Html.ValidationMessageFor(x => x.Contrasenia, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         @Html.Label("DNI:")@Html.TextBoxFor(x => x.Dni, new { placeholder = "DNI", required = "required", @class = "form-control", maxlength = 8 })
-                        @Html.ValidationMessageFor(x => x.Dni, "", new { @class = "text-danger"})
+                        @Html.ValidationMessageFor(x => x.Dni, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label for="file">Solo se permiten archivos .jpg</label>
+                        @Html.LabelFor(Model => Model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <input type="file" name="ImageFile" id="ImageFile" style="width: 100%;" />
                     </div>
                 </div>
                 <p><input type="submit" value="Registrar Medico &raquo;" class="btn btn-outline-dark"></p>

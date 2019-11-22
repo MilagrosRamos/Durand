@@ -138,7 +138,7 @@ namespace DURAND.Services
         
         public static int AgregarMedico(Medico unMedico)
         {
-            int intRegsAffected = 0;
+            int intNewId = 0;
             SqlParameter[] parameterArray = new SqlParameter[7];
 
             parameterArray[0]       = new SqlParameter("@Nombre",               unMedico.Nombre);
@@ -151,13 +151,13 @@ namespace DURAND.Services
 
             try
             {
-                intRegsAffected = DatabaseHelper.ExecuteNonQuery("Medicos_AgregarMedico", parameterArray);
+                intNewId = Convert.ToInt32(DatabaseHelper.ExecuteScalar("Medicos_AgregarMedico", parameterArray));
             }
             catch (Exception ex)
             {
                 CustomLog.LogException(ex);
             }
-            return intRegsAffected;
+            return intNewId;
         }
 
         public static Medico ObtenerPorId(int intID)
@@ -201,6 +201,7 @@ namespace DURAND.Services
                 returnEntity.IdMedico       = (currentReader["Id"]                  != DBNull.Value ? (int)currentReader["Id"] : 0);
                 returnEntity.Nombre         = (currentReader["Nombre"]              != DBNull.Value ? (string)currentReader["Nombre"] : "");
                 returnEntity.Apellido       = (currentReader["Apellido"]            != DBNull.Value ? (string)currentReader["Apellido"] : "");
+                returnEntity.Foto           = (currentReader["Foto"]                != DBNull.Value ? (string)currentReader["Foto"] : "");
                 returnEntity.Especialidad   = (currentReader["IDEspecialidad"]      != DBNull.Value ? (int)currentReader["IDEspecialidad"] : 0);
                 returnEntity.Mail           = (currentReader["Mail"]                != DBNull.Value ? (string)(currentReader["Mail"]) : "");
                 returnEntity.Contrasenia    = (currentReader["Contrasenia"]         != DBNull.Value ? (string)currentReader["Contrasenia"] : "");

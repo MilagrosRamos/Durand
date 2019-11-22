@@ -1,4 +1,11 @@
-﻿
+﻿@{ 
+    DURAND.Models.Medico            MedicoTest;
+    DURAND.Models.Especialidades    currentEspecialidad;
+
+    MedicoTest = (DURAND.Models.Medico)System.Web.HttpContext.Current.Session["sessionMedico"];
+    currentEspecialidad = (DURAND.Models.Especialidades)System.Web.HttpContext.Current.Session["SessionEspecialidad"];
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,16 +41,23 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="~/Content/Foto.png" class="rounded-circle" height="35px" width="35px" />
+                            @if (true)
+                            {
+                                if (MedicoTest.Foto != null)
+                                {
+                                    <img src="@MedicoTest.Foto" class="rounded-circle" height="35px" width="35px" />
+                                }
+                                else
+                                {
+                                    <img src="~/Images/Avatar.jpg" class="rounded-circle" height="35px" width="35px" />
+                                }
+                            }
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 
                             @if (true)
                             {
-                                DURAND.Models.Medico            MedicoTest;
-                                DURAND.Models.Especialidades    currentEspecialidad;
-                                MedicoTest          = (DURAND.Models.Medico)System.Web.HttpContext.Current.Session["sessionMedico"];
-                                currentEspecialidad = (DURAND.Models.Especialidades)System.Web.HttpContext.Current.Session["SessionEspecialidad"];
+                                
                                 if (MedicoTest != null)
                                 {
                                     <a class="dropdown-item">@string.Format("{0} {1}", MedicoTest.Nombre, MedicoTest.Apellido)</a>
